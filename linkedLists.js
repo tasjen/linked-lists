@@ -6,9 +6,8 @@ class Node {
 }
 
 class LinkedList {
-  #head;
   constructor() {
-    this.#head = null;
+    this.head = null;
   }
 
   append(value) {
@@ -20,16 +19,12 @@ class LinkedList {
   }
 
   size() {
-    let p = this.head();
+    let p = this.head;
     if (p === null) return 0;
     for (let i = 1; ; i++) {
       if (p.nextNode === null) return i;
       p = p.nextNode;
     }
-  }
-
-  head() {
-    return this.#head;
   }
 
   tail() {
@@ -38,7 +33,7 @@ class LinkedList {
 
   at(index) {
     if (index > this.size() - 1) return;
-    let p = this.head();
+    let p = this.head;
     for (let i = 0; i < index; i++) {
       p = p.nextNode;
     }
@@ -54,7 +49,7 @@ class LinkedList {
   }
 
   find(value) {
-    let p = this.head();
+    let p = this.head;
     for (let i = 0; i < this.size(); i++) {
       if (p.value === value) return i;
       p = p.nextNode;
@@ -73,7 +68,7 @@ class LinkedList {
   insertAt(value, index) {
     if (index > this.size()) return;
     if (index === 0) {
-      this.#head = new Node(value, this.#head);
+      this.head = new Node(value, this.head);
     } else {
       let p = this.at(index - 1);
       p.nextNode = new Node(value, p.nextNode);
@@ -83,7 +78,7 @@ class LinkedList {
   removeAt(index) {
     if (index > this.size() - 1) return;
     if (index === 0) {
-      this.#head = this.#head.nextNode;
+      this.head = this.head.nextNode;
     } else {
       let p = this.at(index - 1);
       p.nextNode = p.nextNode.nextNode;
